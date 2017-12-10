@@ -1,0 +1,76 @@
+---
+title: "Rmd for CCM Coding Camp"
+author: "Linda"
+date: "11 12 2017"
+output: beamer_presentation
+---
+
+# Start
+
+This is the start of the introductory Rmd File for the CCM Coding Camp 2017. It will take place on Monday, Dec `r 5 + 6`.
+
+```{r packages, include=FALSE}
+library(ggplot2)
+library(knitr)
+```
+
+# Code Chunks
+
+```{r}
+str(mtcars[1:2,1:2])
+```
+
+# Knits options
+
+Set global knitr options with the following code chunk:
+
+```{r setup}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Now we play around with knitr options:
+
+* The code chunk is not shown but results can be used with include.
+
+```{r, include = FALSE}
+a = data.frame(mpg = mtcars$mpg)
+```
+
+* Now use the just assigned variable a where the reader does not know where it comes from.
+
+```{r}
+ggplot(a, aes(x = mpg)) +
+    geom_histogram()
+```
+
+* The message is annoying so we can get rid of it:
+
+```{r, message=FALSE, echo = FALSE}
+ggplot(a, aes(x = mpg)) +
+    geom_histogram()
+```
+
+# Bash
+
+```{bash}
+ls -l
+```
+
+# Tables
+
+Beautiful tables in R
+
+```{r, results = 'asis'}
+kable(mtcars[1:5, 1:3 ], caption = "A knitr kable.")
+```
+
+# Text formatting
+
+Some (useful) text formatting: We can create lists
+
+- *italic*
+- **bold**
+- `code`
+- Latex equations: $a^2 + b^2 = c^2$
+
+
