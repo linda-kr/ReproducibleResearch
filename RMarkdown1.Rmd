@@ -3,20 +3,11 @@ title: "Rmd for CCM Coding Camp"
 author: "Linda"
 date: "11 12 2017"
 output:
-  html_notebook:
-    depth: 6
-    fig_caption: no
-    number_sections: yes
-    theme: united
+  html_document:
     toc: yes
     toc_float: yes
-  word_document:
-    toc: yes
-  html_document:
-    depth: 6
-    fig_caption: no
     number_sections: yes
-    theme: united
+  html_notebook:
     toc: yes
     toc_float: yes
 ---
@@ -24,6 +15,10 @@ output:
 # Start
 
 This is the start of the introductory Rmd File for the CCM Coding Camp 2017. It will take place on Monday, Dec `r 5 + 6`.
+
+# Packages
+
+Load required packages but do not show them here.
 
 ```{r packages, include=FALSE}
 library(ggplot2)
@@ -36,7 +31,7 @@ library(knitr)
 str(mtcars[1:2,1:2])
 ```
 
-# Knits options
+# Knitr options
 
 Set global knitr options with the following code chunk:
 
