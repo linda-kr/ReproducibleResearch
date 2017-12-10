@@ -1,30 +1,92 @@
 ---
-title: "Untitled"
+title: "Rmd for CCM Coding Camp"
 author: "Linda"
-date: "10 12 2017"
-output: html_document
+date: "11 12 2017"
+output:
+  html_notebook:
+    depth: 6
+    fig_caption: no
+    number_sections: yes
+    theme: united
+    toc: yes
+    toc_float: yes
+  word_document:
+    toc: yes
+  html_document:
+    depth: 6
+    fig_caption: no
+    number_sections: yes
+    theme: united
+    toc: yes
+    toc_float: yes
 ---
 
-```{r setup, include=FALSE}
+# Start
+
+This is the start of the introductory Rmd File for the CCM Coding Camp 2017. It will take place on Monday, Dec `r 5 + 6`.
+
+```{r packages, include=FALSE}
+library(ggplot2)
+library(knitr)
+```
+
+# Code Chunks
+
+```{r}
+str(mtcars[1:2,1:2])
+```
+
+# Knits options
+
+Set global knitr options with the following code chunk:
+
+```{r setup}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+Now we play around with knitr options:
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+* The code chunk is not shown but results can be used with include.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+```{r, include = FALSE}
+a = data.frame(mpg = mtcars$mpg)
 ```
 
-## Including Plots
+* Now use the just assigned variable a where the reader does not know where it comes from.
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r}
+ggplot(a, aes(x = mpg)) +
+    geom_histogram()
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+* The message is annoying so we can get rid of it:
+
+```{r, message=FALSE, echo = FALSE}
+ggplot(a, aes(x = mpg)) +
+    geom_histogram()
+```
+
+# Bash
+
+```{bash}
+ls -l
+```
+
+# Tables
+
+Beautiful tables in R
+
+```{r, results = 'asis'}
+kable(mtcars[1:5, 1:3 ], caption = "A knitr kable.")
+```
+
+# Text formatting
+
+Some (useful) text formatting: We can create lists
+
+- *italic*
+- **bold**
+- `code`
+- Latex equations: $a^2 + b^2 = c^2$
+
+
